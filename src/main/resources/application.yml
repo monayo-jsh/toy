@@ -1,2 +1,12 @@
 server:
   port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: toy-project
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
