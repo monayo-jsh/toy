@@ -8,5 +8,5 @@ spring:
     name: toy-project
   mvc:
     view:
-      prefix: /WEB-INF/view/
+      prefix: /WEB-INF/views/
       suffix: .jsp
