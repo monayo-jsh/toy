@@ -5,3 +5,8 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+:root {
+  --bg-color: #f0faff;
+  --bg-color-login: #4070f4;
+}
