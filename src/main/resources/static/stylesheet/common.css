@@ -10,3 +10,23 @@
   --bg-color: #f0faff;
   --bg-color-login: #4070f4;
 }
+
+
+/* boxicons 정의 */
+i.icon-user {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANxJREFUSEvFlFEOwjAMQ72TwU4GnAx2MpClRsqytA6gQn4mbZ2fkyZZMDmWyfqoAs4ALgD4ZDwAbACuymAFQBGKZ3FTEAXw4l7Mv19bRqkDBbi3smRODcJyEfIR4Nn+6hlR3+UlKwH1XQKml4htSQijd8nDTlKXTOGpbWqdQcgpDBqds4OGUclAaXwFiCsiismV0ctACZfXRgbwl0qHo1rTiJkh9LA2MoANj1xkLo3u2ogAO/iOuHFsKHdZREB6qNhGNpS75RcBcrcI2OH/nwOK1agf+/sk1612Tr4A8c04GasYcXMAAAAASUVORK5CYII=");
+  width: 25px;
+  height: 25px;
+}
+
+i.icon-email {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAL1JREFUSEvdlVEOhCAMRMeTqSfTPZneTDPGmlkCSlF+aGJIKPR1WsAOla2rHB9tAQYAEwCOb2wF8APA8a9EywfBLTEGH0PAdnrpOOgFRvVM9IqtTTYAnZQ4OwEa/BHghTAZ9k/tSD6mgNnb4hwl2jvdmwTQEcqN9SW1xkp9CzCpKl3V6Px1Ys5NLgD3hBDO3ZXQDQghpi51nIsADMqa8+v1pkaOcjEg91o0DKj+2FV/rnOb6FrX1i/TJT138Q7PZzcZ3A1N8wAAAABJRU5ErkJggg==");
+  width: 25px;
+  height: 25px;
+}
+
+i.icon-lock {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKhJREFUSEvtlWEKgDAIhd3N6mTVyepmxYMZi1xvRrI/CdFo7n1qWkmCLQXrSytgzoFMIrLl9VKsq3G2ACAOYcsAUbjpwACDiKxFxBDDM1wKfYQwAMQhZoloZp8Axkq995xdNVCWARNg+7SLmADb7wPQDsHdY5iP22xY70A7xyOuvoCgIU6zAFrXNwCcuWj+AKuMf4loc/UvUfighX8qaJE9Dux/4NEyfQ8qhCgZqheymwAAAABJRU5ErkJggg==");
+  width: 25px;
+  height: 25px;
+}

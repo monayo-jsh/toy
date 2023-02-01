@@ -37,9 +37,18 @@
             <div class="layout-form signup">
                 <header>SingUp</header>
                 <form class="form" action="#">
-                    <input type="text" placeholder="you full name" required />
-                    <input type="text" placeholder="you email address" required />
-                    <input type="password" placeholder="your password" required />
+                    <div class="input-field">
+                        <input type="text" placeholder="you full name" required />
+                        <i class="icon-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="you email address" required />
+                        <i class="icon-email"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" placeholder="your password" required />
+                        <i class="icon-lock"></i>
+                    </div>
                     <div class="terms-checkbox">
                         <input type="checkbox" id="signupCheck"/>
                         <label for="signupCheck">I accept all terms & conditions</label>
@@ -51,8 +60,14 @@
             <div class="layout-form login">
                 <header>Login</header>
                 <form class="form" action="#">
-                    <input type="text" placeholder="you email address" required />
-                    <input type="password" placeholder="your password" required />
+                    <div class="input-field">
+                        <input type="text" placeholder="you email address" required />
+                        <i class="icon-email"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" placeholder="your password" required />
+                        <i class="icon-lock"></i>
+                    </div>
                     <a href="#">Forgot password?</a>
                     <input type="submit" value="Login" />
                 </form>
