@@ -11,6 +11,7 @@ ext {
 	jstl = "1.2"
 	lombok = "1.18.24"
 	logstash = "7.2"
+	simpleJson = "1.1.1"
 }
 
 repositories {
@@ -34,6 +35,9 @@ dependencies {
 
 	//logback
 	implementation "net.logstash.logback:logstash-logback-encoder:${logstash}"
+
+	//json
+	implementation "com.googlecode.json-simple:json-simple:${simpleJson}"
 
 	//lombok
 	compileOnly "org.projectlombok:lombok:${lombok}"
