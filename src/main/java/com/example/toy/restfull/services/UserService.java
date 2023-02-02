@@ -7,8 +7,10 @@ import com.example.toy.domain.ResultVo;
 import com.example.toy.domain.user.UserPostReqVo;
 import com.example.toy.restfull.controllers.exception.BadRequestException;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -16,8 +18,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
 
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
+    @Transactional
     public ResultVo registerUser(UserPostReqVo userVo) throws BadRequestException {
         Optional<UserEntity> user = userRepository.findById(userVo.getEmail());
 
@@ -29,7 +33,7 @@ public class UserService {
                                           .email(userVo.getEmail())
                                           .name(userVo.getName())
                                           .subscriptionType(userVo.getSubscriptionType())
-                                          .password(userVo.getPassword())
+                                          .password(passwordEncoder.encode(userVo.getPassword()))
                                           .build();
 
         userRepository.save(createUser);

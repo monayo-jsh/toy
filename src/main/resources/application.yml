@@ -3,6 +3,10 @@ server:
   servlet:
     context-path: /
 
+logging:
+  level:
+    root: info
+
 spring:
   application:
     name: toy-project
