@@ -1,11 +1,12 @@
 package com.example.toy.database.entity;
 
+import com.example.toy.enumeration.SubscriptionType;
+import com.example.toy.enumeration.converter.SubscriptionTypeConverter;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Builder;
@@ -25,7 +26,7 @@ public class UserEntity {
     @Column(name = "name")
     private String name;
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = SubscriptionTypeConverter.class)
     @Column(name = "subscription_type")
     private SubscriptionType subscriptionType;
 

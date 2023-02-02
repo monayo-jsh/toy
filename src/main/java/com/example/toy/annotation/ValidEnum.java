@@ -1,10 +1,16 @@
 package com.example.toy.annotation;
 
-import com.example.toy.annotation.NotNullEnum.EnumValidator;
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.CONSTRUCTOR;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.TYPE_USE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import com.example.toy.annotation.ValidEnum.EnumValidator;
 import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.Objects;
 import javax.validation.Constraint;
@@ -12,21 +18,21 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
-@Target({ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.FIELD, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
+@Retention(RUNTIME)
 @Documented
 @Constraint(validatedBy = EnumValidator.class)
-public @interface NotNullEnum {
-    String message() default "invalid enum value";
+public @interface ValidEnum {
+    String message() default "invalid enum. this is not supported.";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    class EnumValidator implements ConstraintValidator<NotNullEnum, Enum<?>> {
+    class EnumValidator implements ConstraintValidator<ValidEnum, Enum<?>> {
 
         @Override
-        public void initialize(NotNullEnum constraintAnnotation) {
+        public void initialize(ValidEnum constraintAnnotation) {
 
         }
 

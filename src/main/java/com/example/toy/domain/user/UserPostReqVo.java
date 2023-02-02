@@ -1,7 +1,7 @@
 package com.example.toy.domain.user;
 
-import com.example.toy.annotation.NotNullEnum;
-import com.example.toy.database.entity.SubscriptionType;
+import com.example.toy.annotation.ValidEnum;
+import com.example.toy.enumeration.SubscriptionType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -14,7 +14,7 @@ public class UserPostReqVo {
     @JsonProperty("name")
     private String name;
 
-    @NotNullEnum
+    @ValidEnum
     @JsonProperty("subscription_type")
     private SubscriptionType subscriptionType;
 

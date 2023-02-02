@@ -8,6 +8,10 @@ public class BadRequestException extends CustomException {
         super(ResultCode.BAD_REQUEST);
     }
 
+    public BadRequestException(ResultCode resultCode, String message) {
+        super(resultCode, message);
+    }
+
     public <T> BadRequestException(T extra) {
         super(ResultCode.BAD_REQUEST);
         super.addExtra(extra);

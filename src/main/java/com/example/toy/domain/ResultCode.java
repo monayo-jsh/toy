@@ -29,8 +29,8 @@ public enum ResultCode {
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "500000", "internal exception"),
     MAINTENANCE(HttpStatus.INTERNAL_SERVER_ERROR, "500001", "작업 공지"),
     DB_CONNECTION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "500100", "Database 연결 실패"),
-    DB_INSERT_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "500101", "Database insert 실패"),
-    DB_SELECT_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "500102", "Database select 실패"),
+    DB_SELECT_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "500101", "Database select 실패"),
+    DB_INSERT_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "500102", "Database insert 실패"),
     DB_UPDATE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "500103", "Database update 실패"),
     DB_DELETE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "500104", "Database delete 실패");
 
