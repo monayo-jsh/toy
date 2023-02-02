@@ -7,6 +7,7 @@ plugins {
 group = "com.example"
 sourceCompatibility = "11"
 ext {
+	mysqlConnector = "8.0.26"
 	jstl = "1.2"
 	lombok = "1.18.24"
 }
@@ -16,12 +17,21 @@ repositories {
 }
 
 dependencies {
-	implementation "org.springframework.boot:spring-boot-starter"
 	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation "org.springframework.boot:spring-boot-starter-validation"
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation "org.springframework.boot:spring-boot-starter-data-jpa"
 
+	//mysql
+	implementation "mysql:mysql-connector-java:${mysqlConnector}"
+
+	//jstl
 	implementation "javax.servlet:jstl:${jstl}"
+
+	//jsp
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 
+	//lombok
 	compileOnly "org.projectlombok:lombok:${lombok}"
 	annotationProcessor "org.projectlombok:lombok:${lombok}"
 

@@ -10,3 +10,15 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${RDB_ENDPOINT_HOST}:${RDB_PORT}/toy_svc
+    username: ${RDB_USERNAME}
+    password: ${RDB_PASSWORD}
+    hikari:
+      connection-timeout: 3000
+      validation-timeout: 3000
+      minimum-idle: 5
+      maximum-pool-size: 10
+  jpa:
+    show-sql: true #jpa query 확인 용도

@@ -1,4 +1,4 @@
-package com.example.toy.controllers;
+package com.example.toy.restfull.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

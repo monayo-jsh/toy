@@ -10,7 +10,10 @@
         <link rel="stylesheet" type="text/css" href="<c:out value="/stylesheet/common.css"/>" />
         <link rel="stylesheet" type="text/css" href="<c:out value="/stylesheet/login.css"/>" />
 
-        <script type="text/javascript" src="<c:out value="/js/jquery-3.6.3.slim.min.js"/>"></script>
+        <script type="text/javascript" src="<c:out value="/js/jquery/jquery-3.6.3.min.js"/>"></script>
+        <script type="text/javascript" src="<c:out value="/js/common/common.js"/>"></script>
+        <script type="text/javascript" src="<c:out value="/js/common/ajax.js"/>"></script>
+        <script type="text/javascript" src="<c:out value="/js/login/login.js"/>"></script>
 
         <title>토이 프로젝트</title>
     </head>
@@ -20,7 +23,9 @@
             window.onload = () => {
               const wrapper = document.querySelector(".wrapper"),
                     signupHeader = document.querySelector(".signup header"),
-                    loginHeader = document.querySelector(".login header");
+                    loginHeader = document.querySelector(".login header"),
+                    btnLogin = document.querySelector("#btn-login"),
+                    btnSignup = document.querySelector("#btn-signup");
 
               loginHeader.addEventListener("click", () => {
                 wrapper.classList.add("active");
@@ -29,6 +34,7 @@
               signupHeader.addEventListener("click", () => {
                 wrapper.classList.remove("active");
               });
+
             }
 
         </script>
@@ -36,17 +42,17 @@
         <section class="wrapper active">
             <div class="layout-form signup">
                 <header>SingUp</header>
-                <form class="form" action="#">
+                <form class="form" onsubmit="signup(this); return false;">
                     <div class="input-field">
-                        <input type="text" placeholder="you full name" required />
+                        <input type="text" name="name" placeholder="you full name" required />
                         <i class="icon-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="you email address" required />
+                        <input type="text" name="email" placeholder="you email address" required />
                         <i class="icon-email"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" placeholder="your password" required />
+                        <input type="password" name="password" placeholder="your password" required />
                         <i class="icon-lock"></i>
                     </div>
                     <div class="terms-checkbox">
@@ -59,13 +65,13 @@
 
             <div class="layout-form login">
                 <header>Login</header>
-                <form class="form" action="#">
+                <form class="form" onsubmit="login(this); return false;">
                     <div class="input-field">
-                        <input type="text" placeholder="you email address" required />
+                        <input type="text" name="email" placeholder="you email address" required />
                         <i class="icon-email"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" placeholder="your password" required />
+                        <input type="password" name="password" placeholder="your password" required />
                         <i class="icon-lock"></i>
                     </div>
                     <a href="#">Forgot password?</a>

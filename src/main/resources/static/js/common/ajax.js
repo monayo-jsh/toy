@@ -35,7 +35,7 @@ function ajaxCallBackError(res){
   console.log(res);
   if (res.responseText) {
     alert(res.responseText);
-    //return;
+    return;
   }
 
   alert("status:{0}\nmessage:{1}".format(res.status, res.statusText));
