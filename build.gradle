@@ -10,6 +10,7 @@ ext {
 	mysqlConnector = "8.0.26"
 	jstl = "1.2"
 	lombok = "1.18.24"
+	logstash = "7.2"
 }
 
 repositories {
@@ -30,6 +31,9 @@ dependencies {
 
 	//jsp
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+
+	//logback
+	implementation "net.logstash.logback:logstash-logback-encoder:${logstash}"
 
 	//lombok
 	compileOnly "org.projectlombok:lombok:${lombok}"

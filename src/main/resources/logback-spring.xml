@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="300 seconds" >
+    <!-- 콘솔 출력 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} [%t] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="json-logstash" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <jsonGeneratorDecorator class="net.logstash.logback.decorate.PrettyPrintingJsonGeneratorDecorator"/>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="json-logstash"/>
+    </root>
+</configuration>
