@@ -5,8 +5,9 @@ const HTTP_METHOD = {
 
 const defaultOptions = {
   async: false, //동기 호출
-  processData: false, //query string 설정 여부
   contentType: 'application/json',
+  dataType: 'json', //서버 데이터 반환 타입
+  processData: false, //query string 설정 여부
   callback: ajaxCallBackSuccess
 }
 
@@ -17,6 +18,7 @@ function requestAjax(method, url, options, data) {
     type : method,
     url : url,
     async: options.async,
+    dataType: options.dataType,
     processData: options.processData,
     contentType: options.contentType,
     data : data || '',

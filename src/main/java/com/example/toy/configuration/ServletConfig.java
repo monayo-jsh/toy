@@ -14,7 +14,7 @@ public class ServletConfig {
         FilterRegistrationBean<RequestWrapperFilter> requestWrapperFilter = new FilterRegistrationBean<>();
         requestWrapperFilter.setFilter(new RequestWrapperFilter());
         requestWrapperFilter.setOrder(Integer.MIN_VALUE);
-        requestWrapperFilter.addUrlPatterns("/*");
+        requestWrapperFilter.addUrlPatterns("/api/*");
         return requestWrapperFilter;
     }
 
@@ -23,7 +23,7 @@ public class ServletConfig {
         FilterRegistrationBean<LogFilter> logFilter = new FilterRegistrationBean<>();
         logFilter.setFilter(new LogFilter());
         logFilter.setOrder(Integer.MIN_VALUE + 1);
-        logFilter.addUrlPatterns("/*");
+        logFilter.addUrlPatterns("/api/*");
         return logFilter;
     }
 

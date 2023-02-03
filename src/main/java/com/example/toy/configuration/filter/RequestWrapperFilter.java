@@ -33,8 +33,7 @@ public class RequestWrapperFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-		throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		ReadableRequestWrapper wrapper = new ReadableRequestWrapper((HttpServletRequest) request);
 		chain.doFilter(wrapper, response);
 	}
@@ -129,7 +128,7 @@ public class RequestWrapperFilter implements Filter {
 		}
 
 		public boolean isRawData() {
-			return this.rawData != null;
+			return !ObjectUtils.isEmpty(this.rawData);
 		}
 	}
 

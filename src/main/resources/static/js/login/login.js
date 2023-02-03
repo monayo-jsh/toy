@@ -3,7 +3,7 @@ function login(loginForm) {
 
   let formData = convFormData($loginForm.serializeArray());
 
-  requestAjax(HTTP_METHOD.POST, "/user/verify", {contentType: false, callback: callbackLogin}, formData);
+  requestAjax(HTTP_METHOD.POST, "/api/user/verify", {contentType: false, callback: callbackLogin}, formData);
 }
 
 function signup(signupForm) {

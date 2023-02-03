@@ -43,7 +43,7 @@ public class SpringSecurityConfig {
             .loginPage("/login")
             .usernameParameter("email")
             .passwordParameter("password")
-            .loginProcessingUrl("/user/verify")
+            .loginProcessingUrl("/api/user/verify")
             .successHandler(authenticationSuccessHandler())
             .failureHandler(authenticationFailureHandler())
             .permitAll();
