@@ -1,9 +1,9 @@
 function login(loginForm) {
   let $loginForm = $(loginForm);
 
-  let formData = convFormData($loginForm.serializeArray());
+  let formData = $loginForm.serialize();
 
-  requestAjax(HTTP_METHOD.POST, "/api/user/verify", {contentType: false, callback: callbackLogin}, formData);
+  requestAjax(HTTP_METHOD.POST, "/api/user/verify", {contentType: HTTP_CONTENT_TYPE.APPLICATION_FORM, callback: callbackLogin}, formData);
 }
 
 function signup(signupForm) {
@@ -12,7 +12,7 @@ function signup(signupForm) {
   let data = convJSONObject($signupForm.serializeArray());
   data["subscription_type"] = "WEB";
 
-  requestAjax(HTTP_METHOD.POST, '/user', {callback: callbackSignup}, JSON.stringify(data));
+  requestAjax(HTTP_METHOD.POST, '/api/user', {callback: callbackSignup}, JSON.stringify(data));
 }
 
 function callbackLogin(res) {

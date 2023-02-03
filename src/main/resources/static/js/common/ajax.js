@@ -3,11 +3,15 @@ const HTTP_METHOD = {
   GET: "GET"
 }
 
+const HTTP_CONTENT_TYPE = {
+  APPLICATION_JSON: 'application/json',
+  APPLICATION_FORM: 'application/x-www-form-urlencoded'
+}
+
 const defaultOptions = {
   async: false, //동기 호출
-  contentType: 'application/json',
+  contentType: HTTP_CONTENT_TYPE.APPLICATION_JSON,
   dataType: 'json', //서버 데이터 반환 타입
-  processData: false, //query string 설정 여부
   callback: ajaxCallBackSuccess
 }
 
@@ -15,13 +19,12 @@ function requestAjax(method, url, options, data) {
   options = $.extend({}, defaultOptions, options);
 
   $.ajax({
-    type : method,
-    url : url,
     async: options.async,
-    dataType: options.dataType,
-    processData: options.processData,
+    url : url,
+    type : method,
     contentType: options.contentType,
     data : data || '',
+    dataType: options.dataType,
     beforeSend : function(xmlHttpRequest) {
       xmlHttpRequest.setRequestHeader('AJAX', 'true');
     },
