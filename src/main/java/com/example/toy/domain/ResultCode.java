@@ -19,8 +19,7 @@ public enum ResultCode {
 
     FORBIDDEN(HttpStatus.FORBIDDEN, "403000", "권한 없음"),
 
-    NOT_FOUND(HttpStatus.NOT_FOUND, "404000", "서버에 요청을 수행할 수 있는 기능 없음(URL)"),
-    NO_DATA(HttpStatus.NOT_FOUND, "404001", "정보 없음"),
+    NOT_FOUND(HttpStatus.NOT_FOUND, "404000", "정보 없음"),
 
     METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "405000", "서버에 요청을 수행할 수 있는 기능 없음(METHOD)"),
 

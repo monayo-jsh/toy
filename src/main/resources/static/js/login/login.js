@@ -1,16 +1,22 @@
 function login(loginForm) {
   let $loginForm = $(loginForm);
 
-  let data = $loginForm.serializeArray();
+  let formData = convFormData($loginForm.serializeArray());
+
+  requestAjax(HTTP_METHOD.POST, "/user/verify", {contentType: false, callback: callbackLogin}, formData);
 }
 
 function signup(signupForm) {
   let $signupForm = $(signupForm);
 
-  let data = convFormValue($signupForm.serializeArray());
+  let data = convJSONObject($signupForm.serializeArray());
   data["subscription_type"] = "WEB";
 
   requestAjax(HTTP_METHOD.POST, '/user', {callback: callbackSignup}, JSON.stringify(data));
+}
+
+function callbackLogin(res) {
+  window.location = res.result.start;
 }
 
 function callbackSignup(res) {

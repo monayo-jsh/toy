@@ -6,12 +6,22 @@ String.prototype.format = function() {
   return formatted;
 }
 
-function convFormValue(dataArray) {
-  let result = {};
+function convJSONObject(dataArray) {
+  let jsonObject = {};
 
   for (let data of dataArray) {
-    result[data.name] = data.value;
+    jsonObject[data.name] = data.value;
   }
 
-  return result;
+  return jsonObject;
+}
+
+function convFormData(dataArray) {
+  let formData = new FormData();
+
+  for (let data of dataArray) {
+    formData.append(data.name, data.value);
+  }
+
+  return formData;
 }

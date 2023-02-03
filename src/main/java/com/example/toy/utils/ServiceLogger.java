@@ -1,5 +1,7 @@
 package com.example.toy.utils;
 
+import com.example.toy.configuration.filter.RequestWrapperFilter;
+import com.example.toy.domain.ResultCode;
 import com.example.toy.restfull.controllers.exception.CustomException;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -21,6 +23,9 @@ public class ServiceLogger {
 
     private final HttpServletRequest request;
 
+    private final String uri;
+    private final String method;
+
     private String appType;
     private String appName;
     private String clientIp;
@@ -37,16 +42,24 @@ public class ServiceLogger {
     @Builder
     public ServiceLogger(ServletRequest request, String appType, String appName) {
         this.request = (HttpServletRequest) request;
+
+        this.uri = this.request.getRequestURI();
+        this.method = this.request.getMethod().toUpperCase();
+
         this.appType = appType;
         this.appName = appName;
         this.clientIp = this.request.getRemoteAddr();
 
         this.reqTime = System.currentTimeMillis();
+
+        this.requestLog = makeRequestLog();
+
+        this.resultCode = ResultCode.OK.getCode();
+        this.resultMessage = ResultCode.OK.getDescription();
     }
 
     public void writeLog() {
         this.resTime = System.currentTimeMillis();
-        this.requestLog = makeRequestLog();
         this.responseLog = makeResponseLog();
 
         log.info("success", this.requestLog, this.responseLog);
@@ -54,6 +67,8 @@ public class ServiceLogger {
 
     private StructuredArgument makeRequestLog() {
         JSONObject requestLog = new JSONObject();
+        requestLog.put("uri", this.uri);
+        requestLog.put("method", this.method);
         requestLog.put("header", makeRequestHeaderJSON());
         requestLog.put("body", makeRequestBodyJSON());
         requestLog.put("time", new Timestamp(this.reqTime).toLocalDateTime().format(DateTimeFormatter.ISO_DATE_TIME));
@@ -63,11 +78,13 @@ public class ServiceLogger {
     private JSONObject makeRequestBodyJSON() {
         if (ObjectUtils.isEmpty(this.request)) return null;
 
-        String method = this.request.getMethod().toUpperCase();
-
-        if(HttpMethod.POST.name().equals(method)) {
+        if(HttpMethod.POST.name().equals(this.method)) {
             try {
-                return CommonUtil.objectMapper.readValue(this.request.getReader().lines().collect(Collectors.joining()), JSONObject.class);
+                if (((RequestWrapperFilter.ReadableRequestWrapper) request).isRawData()) {
+                    return CommonUtil.objectMapper.readValue(this.request.getReader().lines().collect(Collectors.joining()), JSONObject.class);
+                }
+
+                return makeParameter();
             } catch (IOException e) {
                 log.error(e.getMessage(), e);
             }
@@ -75,6 +92,10 @@ public class ServiceLogger {
             return null;
         }
 
+        return makeParameter();
+    }
+
+    private JSONObject makeParameter() {
         JSONObject jsonParameter = new JSONObject();
         for(Enumeration<String> parameterNames = this.request.getParameterNames(); parameterNames.hasMoreElements();)
         {
@@ -83,7 +104,6 @@ public class ServiceLogger {
         }
         return jsonParameter;
     }
-
     private JSONObject makeRequestHeaderJSON() {
         if(ObjectUtils.isEmpty(this.request)) return null;
 

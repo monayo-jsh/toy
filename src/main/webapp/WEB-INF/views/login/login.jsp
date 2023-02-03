@@ -65,7 +65,7 @@
 
             <div class="layout-form login">
                 <header>Login</header>
-                <form class="form" onsubmit="login(this); return false;">
+                <form class="form" method="post" onsubmit="login(this); return false;">
                     <div class="input-field">
                         <input type="text" name="email" placeholder="you email address" required />
                         <i class="icon-email"></i>

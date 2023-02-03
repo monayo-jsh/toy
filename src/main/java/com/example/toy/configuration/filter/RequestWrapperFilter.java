@@ -35,7 +35,7 @@ public class RequestWrapperFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 		throws IOException, ServletException {
-		ReadableRequestWrapper wrapper = new ReadableRequestWrapper((HttpServletRequest)request);
+		ReadableRequestWrapper wrapper = new ReadableRequestWrapper((HttpServletRequest) request);
 		chain.doFilter(wrapper, response);
 	}
 
@@ -44,7 +44,7 @@ public class RequestWrapperFilter implements Filter {
 		// Do nothing
 	}
 
-	public class ReadableRequestWrapper extends HttpServletRequestWrapper {
+	public static class ReadableRequestWrapper extends HttpServletRequestWrapper {
 		private final Charset encoding;
 		private byte[] rawData;
 		private boolean isMultipart = false;
@@ -128,6 +128,9 @@ public class RequestWrapperFilter implements Filter {
 			return new BufferedReader(new InputStreamReader(this.getInputStream(), this.encoding));
 		}
 
+		public boolean isRawData() {
+			return this.rawData != null;
+		}
 	}
 
 	private static class CustomServletInputStream extends ServletInputStream {

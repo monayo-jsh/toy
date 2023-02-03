@@ -3,7 +3,7 @@ package com.example.toy.restfull.controllers.exception.handler;
 import com.example.toy.restfull.controllers.exception.BadRequestException;
 import com.example.toy.domain.ResultVo;
 import com.example.toy.restfull.controllers.exception.CustomException;
-import com.example.toy.restfull.controllers.exception.DatabaseException;
+import com.example.toy.restfull.controllers.exception.database.DatabaseException;
 import com.example.toy.utils.Consts;
 import com.example.toy.utils.ServiceLogger;
 import javax.servlet.http.HttpServletRequest;
