@@ -10,7 +10,6 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
     @Transactional
@@ -33,7 +31,7 @@ public class UserService {
                                           .email(userVo.getEmail())
                                           .name(userVo.getName())
                                           .subscriptionType(userVo.getSubscriptionType())
-                                          .password(passwordEncoder.encode(userVo.getPassword()))
+//                                          .password(passwordEncoder.encode(userVo.getPassword()))
                                           .build();
 
         userRepository.save(createUser);
